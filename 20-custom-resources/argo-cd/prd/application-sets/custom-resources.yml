@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: custom-resource-prd
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd"
+        revision: main
+        directories:
+          - path: '20-custom-resources/*/prd'
+          - path: '20-custom-resources/argo-cd/prd'
+            exclude: true
+  template:
+    metadata:
+      name: '{{ path[1]}}-custom-resource'
+
+    spec:
+      source:
+        repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd"
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        name: in-cluster
+        namespace: '{{ path[1] }}'
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

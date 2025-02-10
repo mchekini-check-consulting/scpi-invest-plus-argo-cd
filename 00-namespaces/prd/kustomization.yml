@@ -7,3 +7,5 @@ resources:
   - scpi-invest-plus-qua.yml
   - scpi-invest-plus-prd.yml
   - keycloak.yml
+  - cert-manager.yml
+  - external-dns.yml

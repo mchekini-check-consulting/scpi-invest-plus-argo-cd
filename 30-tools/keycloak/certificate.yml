@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-tls
+spec:
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: lets-encrypt
+  secretName: keycloak-tls
+  dnsNames:
+    - keycloak.check-consulting.net
+  usages:
+    - digital signature
+    - key encipherment

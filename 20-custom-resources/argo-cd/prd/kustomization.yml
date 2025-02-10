@@ -3,3 +3,8 @@ kind: Kustomization
 
 resources:
   - applications/namespace.yml
+  - applications/config.yml
+  - application-sets/operators.yml
+  - application-sets/custom-resources.yml
+  - application-sets/tools.yml
+  - application-sets/applications.yml

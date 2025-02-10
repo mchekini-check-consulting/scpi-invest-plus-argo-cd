@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tools
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd"
+        revision: main
+        directories:
+          - path: "30-tools/*"
+  template:
+    metadata:
+      name: '{{ path[1] }}'
+    spec:
+      project: default
+      destination:
+        name: in-cluster
+        namespace: '{{ path[1] }}'
+      source:
+        repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd"
+        path: '{{ path }}'
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

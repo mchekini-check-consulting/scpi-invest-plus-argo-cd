@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+
+resources:
+  - certificate.yml
+  - ingress.yml
+
+
+helmCharts:
+  - name: keycloak
+    repo: https://charts.bitnami.com/bitnami
+    releaseName: keycloak
+    version: 23.0.0
+    valuesFile: values.yml

@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: config-prd
+spec:
+  destination:
+    name: "in-cluster"
+    namespace: argocd
+  project: default
+  source:
+    repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd.git"
+    path: "05-config/prd"
+    targetRevision: main
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

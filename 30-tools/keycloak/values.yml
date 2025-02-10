@@ -1,0 +1,14 @@
+postgresql:
+  enabled: true
+
+auth:
+  adminUser: admin
+  adminPassword: admin
+
+extraEnvVars:
+  - name: KC_HOSTNAME_ADMIN
+    value: "https://keycloak.check-consulting.net"
+  - name: KC_HOSTNAME
+    value: "https://keycloak.check-consulting.net"
+  - name: KC_PROXY
+    value: edge

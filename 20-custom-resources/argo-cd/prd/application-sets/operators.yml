@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: operators
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd"
+        revision: main
+        directories:
+          - path: '10-operators/*/prd'
+  template:
+    metadata:
+      name: '{{ path[1] }}-operator'
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd"
+        targetRevision: main
+        path: '{{ path }}'
+      destination:
+        name: in-cluster
+        namespace: '{{ path[1] }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

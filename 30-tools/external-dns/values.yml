@@ -1,0 +1,31 @@
+provider: aws
+
+domainFilters:
+  - check-consulting.net
+
+
+policy: sync
+interval: 30s
+
+
+rbac:
+  create: true
+  apiVersion: v1
+
+serviceAccount:
+  create: true
+  name: external-dns
+
+#txtOwnerId: pro-epargne-k8s-cluster
+
+# Verbosity of the logs (options: panic, debug, info, warn, error, fatal)
+logLevel: debug
+
+aws:
+  region: us-east-1
+  credentials:
+    secretName: external-dns
+
+sources:
+  - service
+  - ingress
