@@ -1,0 +1,8 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+resources:
+  - argocd.yml
+  - scpi-invest-plus-int.yml
+  - scpi-invest-plus-qua.yml
+  - scpi-invest-plus-prd.yml

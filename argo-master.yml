@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap
+  namespace: argocd
+spec:
+  source:
+    repoURL: "https://github.com/mchekini-check-consulting/scpi-invest-plus-argo-cd.git"
+    path: "20-custom-resources/argo-cd/prd"
+    targetRevision: main
+  destination:
+    namespace: argocd
+    name: in-cluster
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
