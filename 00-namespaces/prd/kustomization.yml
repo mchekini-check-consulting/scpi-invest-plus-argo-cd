@@ -6,3 +6,4 @@ resources:
   - scpi-invest-plus-int.yml
   - scpi-invest-plus-qua.yml
   - scpi-invest-plus-prd.yml
+  - keycloak.yml
