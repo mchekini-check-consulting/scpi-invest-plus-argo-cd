@@ -1,0 +1,10 @@
+image:
+  tag: a6a040806060e9ee8814e8c724e013433495313b
+
+
+ingressPrefix: prd
+ingressPgWebPrefix: production
+
+
+application:
+  environment: prd
