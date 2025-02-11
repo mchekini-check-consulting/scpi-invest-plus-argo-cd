@@ -28,7 +28,7 @@ spec:
           ref: values
       destination:
         name: in-cluster
-        namespace: "scpi-invest-{{ path[2] }}"
+        namespace: "scpi-invest-plus-{{ path[2] }}"
       syncPolicy:
         automated:
           selfHeal: true
