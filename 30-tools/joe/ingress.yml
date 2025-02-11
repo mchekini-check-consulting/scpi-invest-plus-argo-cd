@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: joe
+  namespace: keycloak
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: joe.check-consulting.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: joe-service
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - joe.check-consulting.net
+      secretName: joe-tls

@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: joe-tls
+spec:
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: lets-encrypt
+  secretName: joe-tls
+  dnsNames:
+    - joe.check-consulting.net
+  usages:
+    - digital signature
+    - key encipherment
