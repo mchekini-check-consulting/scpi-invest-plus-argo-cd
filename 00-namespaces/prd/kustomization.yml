@@ -9,3 +9,4 @@ resources:
   - keycloak.yml
   - cert-manager.yml
   - external-dns.yml
+  - jenkins.yml
