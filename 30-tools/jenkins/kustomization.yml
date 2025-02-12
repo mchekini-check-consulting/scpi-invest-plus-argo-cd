@@ -3,6 +3,9 @@ kind: Kustomization
 namespace: keycloak
 
 resources:
-  - joe.yml
   - certificate.yml
+  - deployment.yml
   - ingress.yml
+  - pvc.yml
+  - service.yml
+
