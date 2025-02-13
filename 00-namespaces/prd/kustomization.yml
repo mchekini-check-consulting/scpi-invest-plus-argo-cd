@@ -10,3 +10,4 @@ resources:
   - cert-manager.yml
   - external-dns.yml
   - jenkins.yml
+  - sonarqube.yml
