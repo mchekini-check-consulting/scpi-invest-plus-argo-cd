@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarqube
+  namespace: sonarqube
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: sonar.check-consulting.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sonarqube
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - sonar.check-consulting.net
+      secretName: sonarqube-tls
