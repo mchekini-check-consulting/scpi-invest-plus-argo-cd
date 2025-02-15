@@ -1,10 +1,8 @@
 image:
-  tag: 49dc4749ed17d4b85735e502fea2c093eadc3b9f
-
+  tag: db002251c37854adb2cdf64707999dde268397fb
 
 ingressPrefix: int
 ingressPgWebPrefix: integration
-
 
 application:
   environment: int
