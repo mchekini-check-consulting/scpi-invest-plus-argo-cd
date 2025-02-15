@@ -1,0 +1,11 @@
+zookeeper:
+  enabled: true
+  replicaCount: 1
+
+replicaCount: 2
+
+listeners:
+  client:
+    protocol: PLAINTEXT
+  interbroker:
+    protocol: PLAINTEXT
