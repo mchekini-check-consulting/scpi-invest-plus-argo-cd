@@ -11,3 +11,4 @@ resources:
   - external-dns.yml
   - jenkins.yml
   - sonarqube.yml
+  - kafka.yml
