@@ -12,3 +12,4 @@ resources:
   - jenkins.yml
   - sonarqube.yml
   - kafka.yml
+  - logging.yml
