@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: logging
+
+
+resources:
+  - elastic-deployment.yml
+  - kibana.deployment.yml
+  - filebeat-configmap.yml
+  - filebeat-ds.yml
+  - logstash-cm.yml
+  - logstash-deployment.yml
+  - logstash-svc.yml
+  - certificate.yml
+  - ingress.yml

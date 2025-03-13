@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash
+  namespace: logging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logstash
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      containers:
+        - name: logstash
+          image: docker.elastic.co/logstash/logstash:7.10.1
+          command: [ "./bin/logstash" ]
+          args: [ "-f", "/usr/share/logstash/config/logstash.conf", "--path.data", "datadirectory" ]
+          ports:
+            - containerPort: 5045
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/share/logstash/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: logstash-config

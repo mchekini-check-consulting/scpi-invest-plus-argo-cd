@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+  namespace: logging
+data:
+  filebeat-ds.yml: |
+    ###################### Filebeat Configuration Example #########################
+
+    # ============================== Filebeat inputs ===============================
+    seccomp:
+      default_action: allow
+      syscalls:
+        - action: allow
+          names:
+            - rseq
+
+    filebeat.inputs:
+      - type: container
+        enabled: true
+        paths:
+          - /var/log/containers/scpi-invest-plus-api*.log
+
+        multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+        multiline.negate: true
+        multiline.match: after
+
+    # ============================== Filebeat modules ==============================
+    filebeat.config.modules:
+      path: ${path.config}/modules.d/*.yml
+      reload.enabled: false
+
+    # ======================= Elasticsearch template setting =======================
+    setup.template.settings:
+      index.number_of_shards: 1
+
+
+    # ================================== Outputs ===================================
+    output.logstash:
+      enabled: true
+      hosts: ["logstash:5045"]
+      #protocol: "udp"
+
+    # ================================= Processors =================================
+    processors:
+      - add_host_metadata:
+          when.not.contains.tags: forwarded
+      - add_cloud_metadata: ~
+      - add_docker_metadata: ~
+      - add_kubernetes_metadata: ~
+
+    # ================================== Logging ===================================
+    logging.level: debug
