@@ -22,19 +22,6 @@ spec:
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: test
-          volumeMounts:
-            - name: grafana-data
-              mountPath: /var/lib/grafana
-            - name: grafana-conf
-              mountPath: /etc/grafana
-      volumes:
-        - name: grafana-data
-          persistentVolumeClaim:
-            claimName: grafana-data-pvc
-        - name: grafana-conf
-          persistentVolumeClaim:
-            claimName: grafana-conf-pvc
-
 ---
 apiVersion: v1
 kind: Service
@@ -49,27 +36,3 @@ spec:
       port: 3000
       targetPort: 3000
       nodePort: 32000
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: grafana-data-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: grafana-conf-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
