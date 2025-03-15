@@ -5,6 +5,8 @@ namespace: monitoring
 
 resources:
   - grafana-manifest.yml
+  - certificate.yml
+  - ingress.yml
 
 
 helmCharts:
