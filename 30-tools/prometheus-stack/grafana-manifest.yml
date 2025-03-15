@@ -14,6 +14,15 @@ spec:
       labels:
         app: grafana
     spec:
+      initContainers:
+        - name: init-permissions
+          image: busybox
+          command: ["sh", "-c", "chmod -R 777 /mnt/grafana-data /mnt/grafana-conf"]
+          volumeMounts:
+            - name: grafana-data
+              mountPath: /mnt/grafana-data
+            - name: grafana-conf
+              mountPath: /mnt/grafana-conf
       containers:
         - name: grafana
           image: grafana/grafana
@@ -21,18 +30,32 @@ spec:
             - containerPort: 3000
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
-              value: test
+              value: "test"
+          volumeMounts:
+            - name: grafana-data
+              mountPath: /var/lib/grafana
+            - name: grafana-conf
+              mountPath: /etc/grafana
+      volumes:
+        - name: grafana-data
+          hostPath:
+            path: /mnt/grafana-data  # 📌 Chemin de stockage sur l'hôte
+            type: DirectoryOrCreate
+        - name: grafana-conf
+          hostPath:
+            path: /mnt/grafana-conf  # 📌 Chemin de configuration sur l'hôte
+            type: DirectoryOrCreate
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: grafana
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: grafana
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 32000
