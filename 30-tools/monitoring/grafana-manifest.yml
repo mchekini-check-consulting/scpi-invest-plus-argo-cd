@@ -30,12 +30,12 @@ spec:
             - containerPort: 3000
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
-              value: "test"
+              value: test
           volumeMounts:
             - name: grafana-data
               mountPath: /var/lib/grafana
-            - name: grafana-conf
-              mountPath: /etc/grafana
+#            - name: grafana-conf
+#              mountPath: /etc/grafana
       volumes:
         - name: grafana-data
           hostPath:
