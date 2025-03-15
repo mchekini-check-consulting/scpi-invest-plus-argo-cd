@@ -1,0 +1,59 @@
+# Namespace where the stack will be installed
+namespaceOverride: "monitoring"
+
+# General settings for Prometheus Operator
+prometheusOperator:
+  enabled: true
+
+# Configuration for Prometheus
+
+
+
+
+
+prometheusSpec:
+  serviceMonitorSelectorNilUsesHelmValues: false
+  ruleSelectorNilUsesHelmValues: false
+
+extraScrapeConfigs: |
+  - job_name: 'scpi-invest-plus-api'
+    scrape_interval: 15s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['scpi-invest-plus-api.scpi-invest-plus-int:8080']
+
+# Configuration for Alertmanager
+alertmanager:
+  alertmanagerSpec:
+    replicas: 1
+
+# Configuration for Grafana
+grafana:
+  enabled: true
+  adminUser: admin     # Default admin username
+  adminPassword: admin-admin   # Default admin password (you should change this)
+  service:
+    type: ClusterIP # Use LoadBalancer for external access; use ClusterIP for internal access
+  ingress:
+    enabled: false     # Set to true if you want to use Ingress for Grafana
+
+# Configuration for Node Exporter (enabled by default)
+nodeExporter:
+  enabled: true
+
+# Disable kube-proxy monitoring if it's not needed
+kubeProxy:
+  enabled: false
+
+# Disable kube-scheduler monitoring if it's not needed
+kubeScheduler:
+  enabled: false
+
+# Disable kube-controller-manager monitoring if it's not needed
+kubeControllerManager:
+  enabled: false
+
+# Disable etcd monitoring if it's not needed
+kubeEtcd:
+  enabled: false
+
