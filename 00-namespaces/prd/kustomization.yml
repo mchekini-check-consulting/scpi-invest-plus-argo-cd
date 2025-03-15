@@ -13,3 +13,4 @@ resources:
   - sonarqube.yml
   - kafka.yml
   - logging.yml
+  - monitoring.yml
