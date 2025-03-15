@@ -20,6 +20,7 @@ data:
         enabled: true
         paths:
           - /var/log/containers/scpi-invest-plus-api*.log
+          - /var/log/containers/notification-service*.log
 
         multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
         multiline.negate: true
