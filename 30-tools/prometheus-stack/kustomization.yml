@@ -3,6 +3,10 @@ kind: Kustomization
 namespace: monitoring
 
 
+resources:
+  - grafana-manifest.yml
+
+
 helmCharts:
   - name: prometheus
     repo: https://prometheus-community.github.io/helm-charts
