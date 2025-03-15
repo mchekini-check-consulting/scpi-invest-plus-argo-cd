@@ -3,10 +3,10 @@ kind: Kustomization
 namespace: monitoring
 
 
-resources:
-  - grafana-manifest.yml
-  - certificate.yml
-  - ingress.yml
+#resources:
+#  - grafana-manifest.yml
+#  - certificate.yml
+#  - ingress.yml
 
 
 helmCharts:
