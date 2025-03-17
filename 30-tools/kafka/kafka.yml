@@ -27,7 +27,7 @@ spec:
             - name: KAFKA_LISTENERS
               value: "INTERNAL://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094"
             - name: KAFKA_ADVERTISED_LISTENERS
-              value: "INTERNAL://kafka-$(POD_NAME).kafka-headless:9092,OUTSIDE://kafka-svc.kafka-$(POD_NAME):9094"
+              value: "INTERNAL://$(POD_NAME).kafka-headless:9092,OUTSIDE://$(POD_NAME);kafka-svc:9094"
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
               value: "INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT"
             - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
