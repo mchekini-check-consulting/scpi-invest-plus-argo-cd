@@ -74,3 +74,4 @@ spec:
       protocol: TCP
       port: 9094
       targetPort: 9094
+  type: LoadBalancer
