@@ -44,7 +44,7 @@ kind: Service
 metadata:
   name: kafka-headless
 spec:
-  clusterIP: none
+  clusterIP: None
   selector:
     app: kafka
   ports:
