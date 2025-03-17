@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: kafka
 spec:
+  serviceName: kafka-svc
   replicas: 3
   selector:
     matchLabels:
@@ -26,7 +27,7 @@ spec:
             - name: KAFKA_LISTENERS
               value: "INTERNAL://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094"
             - name: KAFKA_ADVERTISED_LISTENERS
-              value: "INTERNAL://$(POD_IP):9092,OUTSIDE://kafka-svc.kafka:9094"
+              value: "INTERNAL://$(POD_IP):9092,OUTSIDE://$(HOSTNAME).kafka-svc:9094"
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
               value: "INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT"
             - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
@@ -41,12 +42,21 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+  volumeClaimTemplates:
+    - metadata:
+        name: kafka-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: kafka-svc
 spec:
+  clusterIP: None
   selector:
     app: kafka
   ports:
