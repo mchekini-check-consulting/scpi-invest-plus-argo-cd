@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   name: kafka
 spec:
+  serviceName: kafka-headless
   replicas: 3
   selector:
     matchLabels:
@@ -38,6 +39,7 @@ spec:
               value: "zookeeper:2181"
             - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
               value: "false"
+
 ---
 apiVersion: v1
 kind: Service
@@ -74,4 +76,3 @@ spec:
       protocol: TCP
       port: 9094
       targetPort: 9094
-  type: LoadBalancer
