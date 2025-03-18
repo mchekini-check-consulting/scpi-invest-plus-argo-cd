@@ -21,7 +21,7 @@ spec:
             - name: KAFKA_CLUSTERS_0_NAME
               value: "scpi-invest"
             - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-              value: "kafka-svc:9094"
+              value: "kafka-0.kafka-headless.kafka.svc.cluster.local:9092,kafka-1.kafka-headless.kafka.svc.cluster.local:9092,kafka-2.kafka-headless.kafka.svc.cluster.local:9092"
             - name: KAFKA_CLUSTERS_0_ZOOKEEPER
               value: "zookeeper:2181"
 ---
