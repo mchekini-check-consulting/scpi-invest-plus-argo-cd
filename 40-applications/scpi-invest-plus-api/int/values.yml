@@ -1,5 +1,5 @@
 image:
-  tag: 7c768ab12058d2c88aab0d02376a78abdb02ae50
+  tag: 291c3faca1180aeb5836ba2a373e1c041f380de2
 
 ingressPrefix: int
 ingressPgWebPrefix: integration
