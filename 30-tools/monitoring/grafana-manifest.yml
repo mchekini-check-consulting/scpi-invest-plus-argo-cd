@@ -31,6 +31,20 @@ spec:
           env:
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: test
+            - name: GF_SMTP_ENABLED
+              value: "true"
+            - name: GF_SMTP_HOST
+              value: "smtp.gmail.com:587"
+            - name: GF_SMTP_USER
+              value: "jubatouam61@gmail.com"
+            - name: GF_SMTP_PASSWORD
+              value: "tjnpbtytxzjxxpzr"
+            - name: GF_SMTP_FROM_ADDRESS
+              value: "jubatouam61@gmail.com"
+            - name: GF_SMTP_FROM_NAME
+              value: "Grafana Alerts"
+            - name: GF_SMTP_SKIP_VERIFY
+              value: "false"
           volumeMounts:
             - name: grafana-data
               mountPath: /var/lib/grafana
