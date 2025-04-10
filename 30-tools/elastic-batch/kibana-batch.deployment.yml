@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kibana-batch
-          image: docker.elastic.co/kibana/kibana:7.10.1
+          image: docker.elastic.co/kibana/kibana:8.6.2
           env:
             - name: SERVER_NAME
               value: "localhost"
