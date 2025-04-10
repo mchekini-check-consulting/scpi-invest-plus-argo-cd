@@ -20,7 +20,7 @@ spec:
           env:
             - name: SERVER_NAME
               value: "localhost"
-            - name: ELASTICSEARCH_URL
+            - name: ELASTICSEARCH_HOSTS
               value: "http://elasticsearch-batch:9200/"
           resources:
             limits:
