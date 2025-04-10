@@ -26,6 +26,8 @@ spec:
               value: "single-node"
             - name: ES_JAVA_OPTS
               value: "-Xms512m -Xmx512m"
+            - name: xpack.security.enabled
+              value: "false"
           resources:
             limits:
               memory: "1Gi"
