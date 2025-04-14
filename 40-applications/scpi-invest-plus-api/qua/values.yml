@@ -1,5 +1,5 @@
 image:
-  tag: 986da9276c67b51f3e9362b322e5afe9b5854449
+  tag: 22b4f117b3cb815ce568e2f8ca84a9042779f88b
 
 ingressPrefix: qua
 ingressPgWebPrefix: qualification

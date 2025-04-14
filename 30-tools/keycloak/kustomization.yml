@@ -13,3 +13,9 @@ helmCharts:
     releaseName: keycloak
     version: 23.0.0
     valuesFile: values.yml
+
+patches:
+  - path: keycloak-deployment-patch.yml
+    target:
+      kind: Deployment
+      name: keycloak
