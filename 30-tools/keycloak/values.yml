@@ -34,13 +34,15 @@ extraVolumeMounts:
 
 extraInitContainers:
   - name: download-plugins
-    image: curlimages/curl:8.13.0
+    image: curlimages/curl:8.1.2
     command:
       - sh
       - -c
       - |
         mkdir -p /plugins
+        # Download the plugins from GitHub releases
         curl -L -o /plugins/keycloak-webhook-provider-core.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-core-0.8.4-all.jar
+        curl -L -o /plugins/keycloak-webhook-provider-amqp.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-amqp-0.8.4-all.jar
         curl -L -o /plugins/keycloak-webhook-provider-http.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-http-0.8.4-all.jar
         cp /plugins/*.jar /providers/
     volumeMounts:
