@@ -1,5 +1,9 @@
 postgresql:
   enabled: true
+  auth:
+    username: bn_keycloak
+    password: keycloak_postgres
+    database: bitnami_keycloak
 
 auth:
   adminUser: admin
