@@ -30,7 +30,7 @@ extraVolumes:
 
 extraVolumeMounts:
   - name: providers-volume
-    mountPath: /opt/bitnami/keycloak/providers
+    mountPath: /opt/keycloak/providers
 
 extraInitContainers:
   - name: download-plugins
