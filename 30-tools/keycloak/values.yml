@@ -30,7 +30,7 @@ extraVolumes:
 
 extraVolumeMounts:
   - name: providers-volume
-    mountPath: /opt/keycloak/providers
+    mountPath: /opt/bitnami/keycloak/providers
 
 extraInitContainers:
   - name: download-plugins
@@ -40,11 +40,15 @@ extraInitContainers:
       - -c
       - |
         mkdir -p /plugins
-        # Download the plugins from GitHub releases
         curl -L -o /plugins/keycloak-webhook-provider-core.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-core-0.8.4-all.jar
         curl -L -o /plugins/keycloak-webhook-provider-amqp.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-amqp-0.8.4-all.jar
         curl -L -o /plugins/keycloak-webhook-provider-http.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-http-0.8.4-all.jar
+        echo "Downloaded plugins:"
+        ls -l /plugins
         cp /plugins/*.jar /providers/
+        echo "Copied to /providers:"
+        ls -l /providers
     volumeMounts:
       - name: providers-volume
         mountPath: /providers
+
