@@ -2,3 +2,9 @@ image:
   tag: 97e6d3b4821c90d088894661ee59dcf3576bb4dd
 
 ingressMongoExpressPrefix: int
+
+ingressPrefix: int
+ingressPgWebPrefix: integration
+
+application:
+  environment: int
