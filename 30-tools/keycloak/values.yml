@@ -17,7 +17,7 @@ extraEnvVars:
   - name: KC_PROXY
     value: edge
   - name: WEBHOOK_HTTP_BASE_PATH
-    value: "https://int.scpi-invest-plus-api.check-consulting.net/api/v1/webhook/keycloak"
+    value: "https://qua.scpi-invest-plus-api.check-consulting.net/api/v1/webhook/keycloak"
   - name: WEBHOOK_HTTP_AUTH_USERNAME
     value: "admin"
   - name: WEBHOOK_HTTP_AUTH_PASSWORD
