@@ -31,7 +31,7 @@ extraVolumeMounts:
   - name: providers-volume
     mountPath: /opt/bitnami/keycloak/providers
 
-extraInitContainers:
+initContainers:
   - name: download-plugins
     image: curlimages/curl:8.1.2
     command:
