@@ -33,15 +33,14 @@ extraVolumeMounts:
 
 initContainers:
   - name: download-plugins
-    image: curlimages/curl:8.1.2
+    image: bitnami/minideb
     command:
       - sh
       - -c
       - |
-        mkdir -p /plugins
-        curl -L -o /plugins/keycloak-webhook-provider-core.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-core-0.8.4-all.jar
-        curl -L -o /plugins/keycloak-webhook-provider-http.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-http-0.8.4-all.jar
-        cp /plugins/*.jar /providers/
+        apt-get update && apt-get install -y curl
+        curl -fL -o /providers/keycloak-webhook-provider-core.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-core-0.8.4-all.jar
+        curl -fL -o /providers/keycloak-webhook-provider-http.jar https://github.com/vymalo/keycloak-webhook/releases/download/v0.8.4/keycloak-webhook-provider-http-0.8.4-all.jar
     volumeMounts:
       - name: providers-volume
         mountPath: /providers
