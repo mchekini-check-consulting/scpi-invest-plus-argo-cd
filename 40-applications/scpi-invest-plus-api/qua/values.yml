@@ -2,6 +2,7 @@ image:
   tag: 22b4f117b3cb815ce568e2f8ca84a9042779f88b
 
 ingressPrefix: qua
+ingressKibanaPrefix: qua
 ingressPgWebPrefix: qualification
 
 application:

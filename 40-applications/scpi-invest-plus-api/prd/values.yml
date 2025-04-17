@@ -3,6 +3,7 @@ image:
 
 
 ingressPrefix: prd
+ingressKibanaPrefix: prd
 ingressPgWebPrefix: production
 
 

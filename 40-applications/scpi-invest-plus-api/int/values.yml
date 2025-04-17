@@ -2,6 +2,7 @@ image:
   tag: dd7a4ed3e0ef31948ceda3aa28f48174383cfecd
 
 ingressPrefix: int
+ingressKibanaPrefix: int
 ingressPgWebPrefix: integration
 
 application:
