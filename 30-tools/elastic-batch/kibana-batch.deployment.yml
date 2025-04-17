@@ -21,9 +21,7 @@ spec:
             - name: SERVER_NAME
               value: "localhost"
             - name: ELASTICSEARCH_HOSTS
-              value: "http://elasticsearch-batch:9200/"
-            - name: KIBANA_AUTO_CREATE_INDEX
-              value: "true"
+              value: "http://elasticsearch-batch:9200"
           resources:
             limits:
               memory: "1Gi"
