@@ -1,4 +1,5 @@
 image:
     tag: e37203795b214cd4d05ec9c42c61f2b4d9e989e3
 
-ingressPrefix: int
+application:
+    environment: int
