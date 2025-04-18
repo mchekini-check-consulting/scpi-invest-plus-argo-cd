@@ -1,5 +1,5 @@
 image:
-  tag: 22b4f117b3cb815ce568e2f8ca84a9042779f88b
+  tag: 3131ac3329a86a7edc7ef112f2abc8721315f19b
 
 ingressPrefix: qua
 ingressKibanaPrefix: qua
