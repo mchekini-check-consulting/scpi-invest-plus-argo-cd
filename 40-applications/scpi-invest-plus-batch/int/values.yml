@@ -3,3 +3,5 @@ image:
 
 application:
     environment: int
+elasticsearch:
+    hostname: elasticsearch-batch.scpi-invest-plus-int
