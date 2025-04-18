@@ -1,5 +1,5 @@
 image:
-  tag: 3131ac3329a86a7edc7ef112f2abc8721315f19b
+  tag: a58fec7664ad1a05f37980b285822632986c3728
 
 ingressPrefix: qua
 ingressKibanaPrefix: qua
@@ -7,3 +7,5 @@ ingressPgWebPrefix: qualification
 
 application:
   environment: qua
+elasticsearch:
+  hostname: elasticsearch-batch.scpi-invest-plus-qua
