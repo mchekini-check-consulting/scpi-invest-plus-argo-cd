@@ -1,0 +1,63 @@
+server:
+  ha:
+    enabled: true
+
+  standalone:
+    enabled: true
+    config: |
+      ui = true
+
+      listener "tcp" {
+        address = "0.0.0.0:8200"
+        tls_cert_file = "/vault/userconfig/vault-tls/tls.crt"
+        tls_key_file  = "/vault/userconfig/vault-tls/tls.key"
+      }
+
+      storage "consul" {
+        address = "consul-consul-server.vault.svc:8500"
+        path    = "vault/"
+      }
+
+      default_lease_ttl = "168h"
+      max_lease_ttl     = "720h"
+      disable_mlock     = true
+
+  service:
+    enabled: true
+    type: ClusterIP
+    port: 8200
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    pathType: Prefix
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    hosts:
+      - host: vault.check-consulting.net
+        paths:
+          - /
+    tls:
+      - hosts:
+          - vault.check-consulting.net
+        secretName: vault-tls
+
+  extraVolumes:
+    - name: vault-tls
+      secret:
+        secretName: vault-tls
+
+  extraVolumeMounts:
+    - name: vault-tls
+      mountPath: /vault/userconfig/vault-tls
+      readOnly: true
+
+  serviceAccount:
+    create: true
+    name: vault
+
+  livenessProbe:
+    enabled: true
+  readinessProbe:
+    enabled: true
