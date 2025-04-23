@@ -1,5 +1,5 @@
 image:
-  tag: d2216ccbe3179ab3b4ba4743cc7abd24f2dc0ce0
+  tag: 13cd211dde336da96638e7e5a0212f3d502d2554
 
 ingressPrefix: int
 ingressKibanaPrefix: int
