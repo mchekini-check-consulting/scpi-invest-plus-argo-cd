@@ -1,0 +1,15 @@
+global:
+  datacenter: vault-ha
+
+client:
+  enabled: true
+
+connectInject:
+  enabled: false
+
+server:
+  replicas: 1
+  storage: 10Gi
+  storageClass: ebs-sc
+  disruptionBudget:
+    enabled: false
