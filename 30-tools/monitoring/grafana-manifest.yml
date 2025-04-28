@@ -17,12 +17,14 @@ spec:
       initContainers:
         - name: init-permissions
           image: busybox
-          command: ["sh", "-c", "chmod -R 777 /mnt/grafana-data /mnt/grafana-conf"]
+          command: ["sh", "-c", "chmod -R 777 /mnt/grafana-data /mnt/grafana-conf /var/lib/grafana"]
           volumeMounts:
             - name: grafana-data
               mountPath: /mnt/grafana-data
             - name: grafana-conf
               mountPath: /mnt/grafana-conf
+            - name: grafana-data
+              mountPath: /var/lib/grafana
       containers:
         - name: grafana
           image: grafana/grafana
@@ -52,13 +54,16 @@ spec:
 #              mountPath: /etc/grafana
       volumes:
         - name: grafana-data
-          hostPath:
-            path: /mnt/grafana-data  # 📌 Chemin de stockage sur l'hôte
-            type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: grafana-data-pvc
+#          hostPath:
+#            path: /mnt/grafana-data  # 📌 Chemin de stockage sur l'hôte
+#            type: DirectoryOrCreate
         - name: grafana-conf
           hostPath:
             path: /mnt/grafana-conf  # 📌 Chemin de configuration sur l'hôte
             type: DirectoryOrCreate
+
 
 ---
 apiVersion: v1

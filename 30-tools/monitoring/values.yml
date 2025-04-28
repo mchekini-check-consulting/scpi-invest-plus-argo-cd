@@ -56,4 +56,3 @@ kubeControllerManager:
 # Disable etcd monitoring if it's not needed
 kubeEtcd:
   enabled: false
-
