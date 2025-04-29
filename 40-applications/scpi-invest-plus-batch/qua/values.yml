@@ -1,5 +1,5 @@
 image:
-    tag: c5cd57056710d01a56a7b2c61ff5e63dbf298ba7
+    tag: 6b49cb384d46d5e319df43995470dc8692ac09b3
 
 application:
     environment: qua
