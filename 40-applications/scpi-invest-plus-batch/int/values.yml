@@ -1,5 +1,5 @@
 image:
-    tag: c3736ccde8df10a5c5b5780f76150a6abf898801
+    tag: 6b49cb384d46d5e319df43995470dc8692ac09b3
 
 application:
     environment: int
