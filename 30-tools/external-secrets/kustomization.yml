@@ -1,0 +1,4 @@
+namespace: external-secrets
+resources:
+  - eso-deployment.yml
+  - cluster-secret-store.yml
